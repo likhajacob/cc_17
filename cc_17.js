@@ -17,9 +17,30 @@ class Customer {
     }
   }
   
-  // Example:
-  const customer1 = new Customer("Krupa Jacob", "krupa.jacob@email.com");
+  // Log
+  const customer1 = new Customer("Krupa", "krupa@email.com");
   customer1.addPurchase(200);
   customer1.addPurchase(150);
   console.log(`Customer: ${customer1.name}, Total Spent: $${customer1.getTotalSpent()}`);
+  //  Task 2: SalesRep Class
+class SalesRep {
+    constructor(name) {
+      this.name = name;
+      this.clients = [];
+    }
+  
+    addClient(customer) {
+      this.clients.push(customer);
+    }
+  
+    getClientTotal(name) {
+      const client = this.clients.find(c => c.name === name);
+      return client ? client.getTotalSpent() : 0;
+    }
+  }
+  
+  //  Log
+  const salesRep = new SalesRep("Betty");
+  salesRep.addClient(customer1);
+  console.log(`SalesRep: ${salesRep.name}, Client: ${customer1.name}, Total Spent: $${salesRep.getClientTotal("Krupa")}`);
   
