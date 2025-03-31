@@ -43,4 +43,23 @@ class SalesRep {
   const salesRep = new SalesRep("Betty");
   salesRep.addClient(customer1);
   console.log(`SalesRep: ${salesRep.name}, Client: ${customer1.name}, Total Spent: $${salesRep.getClientTotal("Krupa")}`);
+  // Task 3 - VIPCustomer Class
+class VIPCustomer extends Customer {
+    constructor(name, email, vipLevel) {
+      super(name, email);
+      this.vipLevel = vipLevel;
+    }
+  
+    // Override getTotalSpent with 10% bonus
+    getTotalSpent() {
+      const baseTotal = super.getTotalSpent();
+      return baseTotal + baseTotal * 0.10; // 10% bonus
+    }
+  }
+  
+  // Log
+  const vipCustomer = new VIPCustomer("Sandra Simon", "sandrasimon@email.com", "Gold");
+  vipCustomer.addPurchase(600);
+  vipCustomer.addPurchase(100);
+  console.log(`VIP Customer: ${vipCustomer.name}, Total with Bonus: $${vipCustomer.getTotalSpent()}`);
   
